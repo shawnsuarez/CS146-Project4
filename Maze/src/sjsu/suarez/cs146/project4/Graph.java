@@ -73,6 +73,11 @@ public class Graph
 		}
 	}
 	
+	public Cell[][] getCellMaze()
+	{
+		return this.cellMaze;
+	}
+	
 	public static void connectCells(Cell c1, Cell c2)
 	{
 		if(c1.x == c2.x && c1.y > c2.y)
@@ -135,24 +140,28 @@ public class Graph
 		{
 			this.north = c2;
 			c2.south = this;
+			c2.parent = this;
 		}
 		
 		public void setSouth(Cell c2)
 		{
 			this.south = c2;
 			c2.north = this;
+			c2.parent = this;
 		}
 		
 		public void setWest(Cell c2)
 		{
 			this.west = c2;
 			c2.east = this;
+			c2.parent = this;
 		}
 		
 		public void setEast(Cell c2)
 		{
 			this.east = c2;
 			c2.west = this;
+			c2.parent = this;
 		}
 	}
 }
