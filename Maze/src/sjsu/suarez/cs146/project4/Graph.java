@@ -8,7 +8,7 @@ public class Graph
 {
 	private Random rand;
 	private int totalCells;
-	private Cell[][] cellMaze;
+	private Cell[][] cellMaze; //yes
 	
 	public Graph(int size)
 	{
