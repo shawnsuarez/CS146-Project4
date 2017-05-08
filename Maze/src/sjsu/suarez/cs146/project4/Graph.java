@@ -32,22 +32,23 @@ public class Graph
 		Stack<Cell> cellStack = new Stack<>();
 		
 		Cell currentCell = cellMaze[0][0];
+		currentCell.isVisited = true;
 		
 		while (visitedCells < totalCells)
 		{
-			if(currentCell.x > 0)
+			if(currentCell.x > 0 && cellMaze[currentCell.x -1][currentCell.y].isVisited == false)
 			{
 				currentCell.addNeighbor(cellMaze[currentCell.x -1][currentCell.y]);
 			}
-			if(currentCell.y > 0)
+			if(currentCell.y > 0 && cellMaze[currentCell.x][currentCell.y - 1].isVisited == false)
 			{
 				currentCell.addNeighbor(cellMaze[currentCell.x][currentCell.y - 1]);
 			}
-			if(currentCell.x < cellMaze.length)
+			if(currentCell.x < cellMaze.length && cellMaze[currentCell.x + 1][currentCell.y].isVisited == false)
 			{
 				currentCell.addNeighbor(cellMaze[currentCell.x + 1][currentCell.y]);
 			}
-			if(currentCell.y < cellMaze[0].length)
+			if(currentCell.y < cellMaze[0].length && cellMaze[currentCell.x][currentCell.y + 1].isVisited == false)
 			{
 				currentCell.addNeighbor(cellMaze[currentCell.x][currentCell.y + 1]);
 			}
@@ -58,9 +59,11 @@ public class Graph
 				Cell currentNeighbor = currentCell.neighbors.get((int)random()*neighSize);
 				
 				//Connect the two cells
+				connectCells(currentCell, currentNeighbor);
 				
 				cellStack.push(currentCell);
 				currentCell = currentNeighbor;
+				currentCell.isVisited = true;
 				visitedCells++;
 			}
 			else
@@ -74,7 +77,19 @@ public class Graph
 	{
 		if(c1.x == c2.x && c1.y > c2.y)
 		{
-			
+			c1.setSouth(c2);
+		}
+		else if(c1.x == c2.x && c1.y < c1.y )
+		{
+			c1.setNorth(c2);
+		}
+		else if(c1.x < c2.x && c1.y == c2.y)
+		{
+			c1.setWest(c2);
+		}
+		else if(c1.x > c2.x && c1.y == c2.y)
+		{
+			c1.setEast(c2);
 		}
 	}
 	
