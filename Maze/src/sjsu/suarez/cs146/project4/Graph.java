@@ -91,6 +91,11 @@ public class Graph
 		return this.cellMaze;
 	}
 	
+	public int getNumCells()
+	{
+		return totalCells;
+	}
+	
 	public static void connectCells(Cell c1, Cell c2)
 	{
 		if(c1.x == c2.x && c1.y > c2.y) //Same row, diff column
