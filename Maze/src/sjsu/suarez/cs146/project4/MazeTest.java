@@ -15,8 +15,8 @@ public class MazeTest
 		testG.generateMaze();
 		testG.printMaze();
 		
-		Graph.Cell testCell = testG.getCellMaze()[0][0];
-		//System.out.println("TestCell: " + testCell.data + " | Neighbor: " + testCell.east.getData());
+		Graph.Cell testCell = testG.getCellMaze()[1][0];
+		System.out.println("TestCell: " + testCell.data + " | Neighbor: " + testCell.south.getData());
 		
 		
 		//Review on how to do arrays

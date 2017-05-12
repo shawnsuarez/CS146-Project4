@@ -70,7 +70,6 @@ public class Graph
 				
 				Cell currentNeighbor = currentCell.neighbors.get(randomIndex);
 				
-				
 				//Connect the two cells
 				connectCells(currentCell, currentNeighbor);
 				
@@ -94,24 +93,25 @@ public class Graph
 	
 	public static void connectCells(Cell c1, Cell c2)
 	{
-		if(c1.x == c2.x && c1.y > c2.y)
+		if(c1.x == c2.x && c1.y > c2.y) //Same row, diff column
 		{
 			c1.setWest(c2);
 		}
-		else if(c1.x == c2.x && c1.y < c2.y )
+		else if(c1.x == c2.x && c1.y < c2.y ) //Same row, diff column
 		{
 			c1.setEast(c2);
 		}
-		else if(c1.x < c2.x && c1.y == c2.y)
+		else if(c1.x < c2.x && c1.y == c2.y) //Diff row, same column
 		{
 			c1.setSouth(c2);
 		}
-		else if(c1.x > c2.x && c1.y == c2.y)
+		else if(c1.x > c2.x && c1.y == c2.y) //Diff row, same column
 		{
 			c1.setNorth(c2);
 		}
 	}
 	
+	//Method to print the maze
 	public void printMaze()
 	{
 		String[][] mazeString = new String[2*size + 1][2*size + 1];
@@ -210,7 +210,7 @@ public class Graph
 			this.y = y;
 			this.neighbors = new ArrayList<>();
 			this.isVisited = false;
-			this.data = " ";
+			this.data = "?";
 		}
 		
 		public void addNeighbor(Cell c)
