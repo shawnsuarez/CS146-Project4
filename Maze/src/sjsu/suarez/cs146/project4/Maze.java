@@ -8,7 +8,7 @@ public class Maze
 {
 	public static void main(String[] args)
 	{
-		Maze m = new Maze(4);
+		Maze m = new Maze(10);
 		System.out.println("Maze: ");
 		m.generateMaze();
 		m.printMaze(false);
@@ -372,6 +372,33 @@ class Cell
 	public void setAsParentOf(Cell c2)
 	{
 		c2.parent = this;
+	}
+	
+	public void setConnectedAsNeigbors()
+	{
+		ArrayList<Cell> connected = new ArrayList<Cell>();
+		
+		if(north != null)
+		{
+			connected.add(north);
+		}
+		
+		if(south != null)
+		{
+			connected.add(south);
+		}
+		
+		if(west != null)
+		{
+			connected.add(west);
+		}
+		
+		if(east != null)
+		{
+			connected.add(east);
+		}
+		
+		neighbors = connected;
 	}
 	
 	public boolean equals(Cell c2)

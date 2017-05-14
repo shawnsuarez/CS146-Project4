@@ -27,6 +27,7 @@ public class DFSSolve
 		while(!cellStack.isEmpty() && !currentCell.equals(cellMaze[size-1][size-1]))
 		{
 			currentCell = cellStack.pop();
+			currentCell.setConnectedAsNeigbors();
 			currentCell.color = "Black";
 			currentCell.data = "" + time++ % 10;
 			
